@@ -1,0 +1,151 @@
+/* Variables de color */
+:root {
+  --blanco: #ffffff;
+  --gris-claro: #f2f2f2;
+  --gris-medio: #aaaaaa;
+  --gris-oscuro: #444444;
+  --negro: #111111;
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--blanco);
+  color: var(--negro);
+  line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+  background-color: var(--negro);
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--gris-medio);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--blanco);
+}
+
+/* Contenido principal */
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+/* Encabezado */
+header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--gris-claro);
+  padding-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+header p {
+  color: var(--gris-oscuro);
+}
+
+/* Secciones */
+section {
+  margin-bottom: 2.5rem;
+}
+
+section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--gris-oscuro);
+}
+
+/* Grilla de tarjetas */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* Tarjeta */
+.tarjeta {
+  background-color: var(--gris-claro);
+  border: 1px solid var(--gris-medio);
+  border-radius: 6px;
+  padding: 1.25rem;
+  cursor: pointer;
+}
+
+.tarjeta:hover {
+  background-color: var(--gris-medio);
+}
+
+/* Tarjeta seleccionada */
+.tarjeta.seleccionada {
+  background-color: var(--negro);
+  color: var(--blanco);
+  border-color: var(--negro);
+}
+
+/* Botones */
+button {
+  background-color: var(--negro);
+  color: var(--blanco);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-right: 0.5rem;
+}
+
+button:hover {
+  background-color: var(--gris-oscuro);
+}
+
+/* Botón de filtro activo */
+button.activo {
+  background-color: var(--gris-oscuro);
+  outline: 2px solid var(--negro);
+}
+
+/* Texto de resultado / contador */
+#resultado-contador,
+#contador-seleccion {
+  margin-top: 0.75rem;
+  color: var(--gris-oscuro);
+  font-size: 0.95rem;
+}
+
+/* Enlace volver */
+a.volver {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--gris-oscuro);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+a.volver:hover {
+  color: var(--negro);
+}
+
+/* Filtros */
+#filtros {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
