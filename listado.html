@@ -38,5 +38,63 @@
 
   </main>
 
+  <script>
+    // Arreglo de alimentos con categoria
+    const alimentos = [
+      { nombre: "Frutilla",  categoria: "fruta"   },
+      { nombre: "Naranja",   categoria: "fruta"   },
+      { nombre: "Sandia",    categoria: "fruta"   },
+      { nombre: "Durazno",   categoria: "fruta"   },
+      { nombre: "Pimiento",  categoria: "vegetal" },
+      { nombre: "Zanahoria", categoria: "vegetal" },
+      { nombre: "Brocoli",   categoria: "vegetal" },
+      { nombre: "Espinaca",  categoria: "vegetal" },
+    ];
+
+    // Limpia el grid y renderiza la lista recibida
+    function renderizarAlimentos(lista) {
+      const grid = document.getElementById("items-grid");
+      grid.className = "grid";
+      grid.innerHTML = "";
+
+      lista.forEach(function(alimento) {
+        const div = document.createElement("div");
+        div.className = "tarjeta";
+        div.innerHTML = "<p>" + alimento.nombre + "</p><small>" + alimento.categoria + "</small>";
+        grid.appendChild(div);
+      });
+    }
+
+    // Marca el boton activo y desactiva los demas
+    function actualizarBotones(idActivo) {
+      ["btn-todos", "btn-frutas", "btn-vegetales"].forEach(function(id) {
+        document.getElementById(id).classList.remove("activo");
+      });
+      document.getElementById(idActivo).classList.add("activo");
+    }
+
+    // Eventos de los botones de filtro
+    document.getElementById("btn-todos").addEventListener("click", function() {
+      actualizarBotones("btn-todos");
+      renderizarAlimentos(alimentos);
+    });
+
+    document.getElementById("btn-frutas").addEventListener("click", function() {
+      actualizarBotones("btn-frutas");
+      const frutas = alimentos.filter(function(a) { return a.categoria === "fruta"; });
+      renderizarAlimentos(frutas);
+    });
+
+    document.getElementById("btn-vegetales").addEventListener("click", function() {
+      actualizarBotones("btn-vegetales");
+      const vegetales = alimentos.filter(function(a) { return a.categoria === "vegetal"; });
+      renderizarAlimentos(vegetales);
+    });
+
+    // Carga inicial: muestra todos
+    actualizarBotones("btn-todos");
+    renderizarAlimentos(alimentos);
+  </script>
+
 </body>
 </html>
