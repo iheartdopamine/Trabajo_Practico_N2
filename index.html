@@ -38,6 +38,51 @@
 
   </main>
 
+  <script>
+    // Arreglo de meriendas
+    const meriendas = [
+      "Banana",
+      "Yogur natural",
+      "Manzana",
+      "Nueces",
+      "Tostada integral",
+      "Kiwi",
+    ];
+
+    // Genera una tarjeta por cada merienda y la agrega al DOM
+    function renderizarMeriendas() {
+      const grid = document.getElementById("snacks-grid");
+      grid.className = "grid";
+
+      meriendas.map(function(merienda) {
+        const div = document.createElement("div");
+        div.className = "tarjeta";
+        div.innerHTML = "<p>" + merienda + "</p>";
+        return div;
+      }).forEach(function(tarjeta) {
+        grid.appendChild(tarjeta);
+      });
+    }
+
+    // Muestra en el DOM cuántos elementos tiene el arreglo
+    function configurarContador() {
+      const boton = document.getElementById("btn-contar");
+      const resultado = document.getElementById("resultado-contador");
+
+      boton.addEventListener("click", function() {
+        const cantidad = meriendas.length;
+
+        if (cantidad === 1) {
+          resultado.textContent = "Hay 1 merienda disponible.";
+        } else {
+          resultado.textContent = "Hay " + cantidad + " meriendas disponibles.";
+        }
+      });
+    }
+
+    renderizarMeriendas();
+    configurarContador();
+  </script>
 
 </body>
 </html>
