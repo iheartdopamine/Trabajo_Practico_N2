@@ -37,5 +37,63 @@
 
   </main>
 
+  <script>
+    // Arreglo de películas
+    const peliculas = [
+      { titulo: "Interestelar",          genero: "Ciencia ficcion" },
+      { titulo: "El senor de los anillos", genero: "Fantasia"      },
+      { titulo: "Matrix",                genero: "Accion"          },
+      { titulo: "El rey leon",           genero: "Animacion"       },
+      { titulo: "El origen",             genero: "Thriller"        },
+      { titulo: "Forrest Gump",          genero: "Drama"           },
+    ];
+
+    let cantidadSeleccionadas = 0;
+
+    // Actualiza el texto del contador en el DOM
+    function actualizarContador() {
+      document.getElementById("contador-seleccion").textContent =
+        "Seleccionadas: " + cantidadSeleccionadas;
+    }
+
+    // Genera una tarjeta por cada pelicula y asigna el evento de clic
+    function renderizarTarjetas() {
+      const grid = document.getElementById("cards-grid");
+      grid.className = "grid";
+
+      peliculas.forEach(function(pelicula) {
+        const div = document.createElement("div");
+        div.className = "tarjeta";
+        div.innerHTML = "<h3>" + pelicula.titulo + "</h3><p>" + pelicula.genero + "</p>";
+
+        // Alterna la clase "seleccionada" y actualiza el contador
+        div.addEventListener("click", function() {
+          const estabaSeleccionada = div.classList.contains("seleccionada");
+          div.classList.toggle("seleccionada");
+          cantidadSeleccionadas = estabaSeleccionada
+            ? cantidadSeleccionadas - 1
+            : cantidadSeleccionadas + 1;
+          actualizarContador();
+        });
+
+        grid.appendChild(div);
+      });
+    }
+
+    // Quita la clase "seleccionada" de todas las tarjetas y resetea el contador
+    function configurarLimpiar() {
+      document.getElementById("btn-limpiar").addEventListener("click", function() {
+        document.querySelectorAll(".tarjeta.seleccionada").forEach(function(t) {
+          t.classList.remove("seleccionada");
+        });
+        cantidadSeleccionadas = 0;
+        actualizarContador();
+      });
+    }
+
+    renderizarTarjetas();
+    configurarLimpiar();
+  </script>
+
 </body>
 </html>
